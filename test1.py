@@ -44,7 +44,7 @@ def main():
         st.session_state['chat_history'].append(user_input)
 
         # Get bot response and append to chat history without the "Bot" label
-        bot_response = get_chatbot_response(user_input)
+        bot_response = get_iletisimkocu_response(user_input)
         st.session_state['chat_history'].append(bot_response)
 
         # Clear the input box after the message is sent
