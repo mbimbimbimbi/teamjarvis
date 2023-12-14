@@ -1,8 +1,3 @@
-pip install streamlit
-
-import streamlit as st
-import time
-
 # İletişim koçunun(iletisimkocu) oluşturduğu cevabı buradan alıyoruz. Şimdilik random cevaplar ekledim, fakat buraya iletişim koçunun API'nı bağlamak gerekiyor
 def get_iletisimkocu_response(message):
     responses = {
