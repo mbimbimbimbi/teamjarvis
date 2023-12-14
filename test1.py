@@ -1,6 +1,6 @@
 import streamlit as st
 # Koyu tema
-st.set_page_config(layout="wide", page_title="Team J.A.R.V.I.S.", page_icon="🤖", theme="dark")
+##st.set_page_config(layout="wide", page_title="Team J.A.R.V.I.S.", page_icon="🤖", theme="dark")
 
 import time
 
