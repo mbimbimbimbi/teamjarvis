@@ -12,11 +12,19 @@ def get_iletisimkocu_response(message):
     return responses.get(message.lower(), "I'm sorry, I don't understand that.")
 
 # Streamlit app layout
+# Koyu tema
+st.set_page_config(layout="wide", page_title="Chatbot", page_icon="🤖", theme="dark")
+
 def main():
     st.title("Team J.A.R.V.I.S.")
 
     # Kullanıcının sorusunu sormayı tarif ettiğimiz alan burası
     user_input = st.text_input("Lütfen sorunuzu yaziniz:")
+    if user_input:
+        col1, col2 = st.columns(2)  # Create two columns
+        with col1:  # Left column for user input
+            st.text_area("User:", value=user_input, height=100, max_chars=None, key="user")
+
 
     # Kullanıcı soru sordugunda
     if user_input:
@@ -30,6 +38,9 @@ def main():
         # iletisim kocunun cevabını alma ve gosterme
         bot_response = get_iletisimkocu_response(user_input)
         st.text_area("J.A.R.V.I.S.:", value=bot_response, height=100, max_chars=None, key="J.A.R.V.I.S.")
+        with col2:  # Right column for bot response
+            bot_response = get_iletisimkocu_response(user_input)
+            st.text_area("Bot:", value=bot_response, height=100, max_chars=None, key="bot")
 
 # Çalıştırma  
 if __name__ == "__main__":
