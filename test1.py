@@ -1,4 +1,6 @@
 import streamlit as st
+# Koyu tema
+st.set_page_config(layout="wide", page_title="Chatbot", page_icon="🤖", theme="dark")
 import time
 
 # İletişim koçunun(iletisimkocu) oluşturduğu cevabı buradan alıyoruz. Şimdilik random cevaplar ekledim, fakat buraya iletişim koçunun API'nı bağlamak gerekiyor
@@ -12,9 +14,6 @@ def get_iletisimkocu_response(message):
     return responses.get(message.lower(), "I'm sorry, I don't understand that.")
 
 # Streamlit app layout
-# Koyu tema
-st.set_page_config(layout="wide", page_title="Chatbot", page_icon="🤖", theme="dark")
-
 def main():
     st.title("Team J.A.R.V.I.S.")
 
