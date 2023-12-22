@@ -14,8 +14,15 @@ def get_iletisimkocu_response(message):
 
 # Streamlit app layout
 def main():
-    st.title("Team J.A.R.V.I.S.")
+
+    # Set the page to wide mode for better chat layout
+    st.set_page_config(page_title="Team J.A.R.V.I.S.", layout="wide", theme={"base": "dark"})
     
+    st.title("Team J.A.R.V.I.S.")
+
+    
+    # Chat container
+    chat_container = st.container()
 
     # Kullanıcının sorusunu sormayı tarif ettiğimiz alan burası
     user_input = st.text_input("Lütfen sorunuzu yaziniz:")
@@ -23,15 +30,21 @@ def main():
     # Kullanıcı soru sordugunda
     if user_input:
         # Kullanıcının mesajını gösterir
-        st.text_area("Kullanici:", value=user_input, height=100, max_chars=None, key="kullanici")
+     with chat_container:
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.text_area("Kullanici:", value=user_input, height=100, max_chars=None, key="kullanici")
 
         # Yazı yazma efekti
         with st.spinner("J.A.R.V.I.S. yaziyor..."):
             time.sleep(2)  # yazı yazma efektini göstermek için birkaç saniyelik pause
 
         # iletisim kocunun cevabını alma ve gosterme
-        bot_response = get_iletisimkocu_response(user_input)
-        st.text_area("J.A.R.V.I.S.:", value=bot_response, height=100, max_chars=None, key="J.A.R.V.I.S.")
+       bot_response = get_iletisimkocu_response(user_input)
+        with chat_container:
+            col1, col2 = st.columns([1, 1])
+            with col2:
+                st.text_area("J.A.R.V.I.S.:", value=bot_response, height=100, max_chars=None, key="J.A.R.V.I.S.")
         
 # Çalıştırma  
 if __name__ == "__main__":
