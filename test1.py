@@ -30,14 +30,14 @@ def main():
     # Kullanıcı soru sordugunda
     if user_input:
         # Kullanıcının mesajını gösterir
-     with chat_container:
+        with chat_container:
             col1, col2 = st.columns([1, 1])
             with col1:
                 st.text_area("Kullanici:", value=user_input, height=100, max_chars=None, key="kullanici")
 
         # Yazı yazma efekti
-        with st.spinner("J.A.R.V.I.S. yaziyor..."):
-            time.sleep(2)  # yazı yazma efektini göstermek için birkaç saniyelik pause
+            with st.spinner("J.A.R.V.I.S. yaziyor..."):
+                time.sleep(2)  # yazı yazma efektini göstermek için birkaç saniyelik pause
 
         # iletisim kocunun cevabını alma ve gosterme
        bot_response = get_iletisimkocu_response(user_input)
