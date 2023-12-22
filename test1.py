@@ -16,7 +16,7 @@ def get_iletisimkocu_response(message):
 def main():
 
     # Set the page to wide mode for better chat layout
-    st.set_page_config(page_title="Team J.A.R.V.I.S.", layout="wide", theme={"base": "dark"})
+    st.set_page_config(theme={"base": "dark"}, page_title="Team J.A.R.V.I.S.", layout="wide",)
     
     st.title("Team J.A.R.V.I.S.")
 
