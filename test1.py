@@ -2,21 +2,34 @@ import streamlit as st
 
 import time
 
+# İletişim koçunun(iletisimkocu) oluşturduğu cevabı buradan alıyoruz. Şimdilik random cevaplar ekledim, fakat buraya iletişim koçunun API'nı bağlamak gerekiyor
+def get_iletisimkocu_response(message):
+    responses = {
+        "hi": "Hello! How can I help you today?",
+        "how are you?": "I'm a bot, so I don't have feelings, but thanks for asking!",
+        "bye": "Goodbye! Have a great day!"
+    }
+    # Konu dışı konuları da buradan ayarlamamız gerekecek, fakat bunu iletisimkocundan mı yapmak gerek yoksa router agent'tan mı yapmak gerek bunu bir düşünelim belki buraya ilave bir katman gerekebilir
+    return responses.get(message.lower(), "I'm sorry, I don't understand that.")
+
+# Streamlit app layout
+
+
 def main():
 
-    # Set the page to wide mode for better chat layout
+    #Set the page to wide mode for better chat layout
     st.set_page_config(page_title="Team J.A.R.V.I.S.", layout="wide")
     
     st.title("Team J.A.R.V.I.S.")
 
     
-    # Chat container
+    #Chat container
     chat_container = st.container()
 
-    # Kullanıcının sorusunu sormayı tarif ettiğimiz alan burası
+    #Kullanıcının sorusunu sormayı tarif ettiğimiz alan burası
     user_input = st.text_input("Lütfen sorunuzu yaziniz:")
 
-    # Kullanıcı soru sordugunda
+    #Kullanıcı soru sordugunda
     if user_input:
         # Kullanıcının mesajını gösterir
         with chat_container:
@@ -40,14 +53,3 @@ if __name__ == "__main__":
     main() 
 
 
-# İletişim koçunun(iletisimkocu) oluşturduğu cevabı buradan alıyoruz. Şimdilik random cevaplar ekledim, fakat buraya iletişim koçunun API'nı bağlamak gerekiyor
-def get_iletisimkocu_response(message):
-    responses = {
-        "hi": "Hello! How can I help you today?",
-        "how are you?": "I'm a bot, so I don't have feelings, but thanks for asking!",
-        "bye": "Goodbye! Have a great day!"
-    }
-    # Konu dışı konuları da buradan ayarlamamız gerekecek, fakat bunu iletisimkocundan mı yapmak gerek yoksa router agent'tan mı yapmak gerek bunu bir düşünelim belki buraya ilave bir katman gerekebilir
-    return responses.get(message.lower(), "I'm sorry, I don't understand that.")
-
-# Streamlit app layout
