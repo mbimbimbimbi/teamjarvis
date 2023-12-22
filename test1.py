@@ -41,7 +41,7 @@ def main():
 
         # iletisim kocunun cevabını alma ve gosterme
        bot_response = get_iletisimkocu_response(user_input)
-        with chat_container:
+       with chat_container:
             col1, col2 = st.columns([1, 1])
             with col2:
                 st.text_area("J.A.R.V.I.S.:", value=bot_response, height=100, max_chars=None, key="J.A.R.V.I.S.")
