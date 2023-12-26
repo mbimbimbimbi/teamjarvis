@@ -25,17 +25,14 @@ def main():
     
     #Chat container
     chat_container = st.container()
-
-    #Kullanıcının sorusunu sormayı tarif ettiğimiz alan burası
-    user_input = st.text_input("Lütfen sorunuzu yaziniz:")
-
+    
     #Kullanıcı soru sordugunda
     if user_input:
         # Kullanıcının mesajını gösterir
         with chat_container:
             col1, col2 = st.columns([1, 1])
             with col1:
-                st.text_area("Kullanici:", value=user_input, height=100, max_chars=None, key="kullanici")
+                st.text("Kullanici: " + user_input)
 
         # Yazı yazma efekti
             with st.spinner("J.A.R.V.I.S. yaziyor..."):
@@ -46,8 +43,11 @@ def main():
         with chat_container:
             col1, col2 = st.columns([1, 1])
             with col2:
-                st.text_area("J.A.R.V.I.S.:", value=bot_response, height=100, max_chars=None, key="J.A.R.V.I.S.")
-        
+            st.text("J.A.R.V.I.S.: " + bot_response)
+
+    #Kullanıcının sorusunu sormayı tarif ettiğimiz alan burası
+    user_input = st.text_input("Kullanıcı", placeholder="Lütfen sorunuzu yazınız")        
+
 # Çalıştırma  
 if __name__ == "__main__":
     main() 
