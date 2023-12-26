@@ -18,7 +18,7 @@ def get_iletisimkocu_response(message):
 def main():
     st.title("Team J.A.R.V.I.S.")
 
-    # Initialize chat history and reset trigger in session state
+    # Initialize chat history in session state
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
 
@@ -32,25 +32,22 @@ def main():
     with chat_container:
         display_chat()
 
-    # User input and submit button
-    user_input = st.text_input("Kullanıcı", placeholder="Lütfen sorunuzu yazınız", key="user_input")
+    # User input
+    user_input = st.text_input("Kullanıcı", placeholder="Lütfen sorunuzu yazınız", key="user_input", on_change=handle_input, args=(st.session_state,))
 
-    submit_button = st.button("Send")
-
-    # Handling user input when the button is clicked
-    if submit_button and user_input:
+# Function to handle input
+def handle_input(session_state):
+    user_input = session_state.user_input
+    if user_input:
         user_message = "Kullanici: " + user_input
         bot_response = "J.A.R.V.I.S.: " + get_iletisimkocu_response(user_input)
 
         # Update chat history
-        st.session_state.chat_history.extend([user_message, bot_response])
+        session_state.chat_history.extend([user_message, bot_response])
 
         # Clear the user input field
-        st.session_state.user_input = ""
-
-        # Refresh the chat display
-        with chat_container:
-            display_chat()
+        session_state.user_input = ""
 
 # Run the main function
-if __name__ == 
+if __name__ == "__main__":
+    main()
