@@ -1,3 +1,18 @@
+import streamlit as st
+import time
+
+# Set the page config as the first thing in your script
+st.set_page_config(page_title="Team J.A.R.V.I.S.", layout="wide")
+
+def get_iletisimkocu_response(message):
+    responses = {
+        "hi": "Hello! How can I help you today?",
+        "how are you?": "I'm a bot, so I don't have feelings, but thanks for asking!",
+        "bye": "Goodbye! Have a great day!"
+    }
+    return responses.get(message.lower(), "I'm sorry, I don't understand that.")
+
+
 def main():
     st.set_page_config(page_title="Team J.A.R.V.I.S.", layout="wide")
     st.title("Team J.A.R.V.I.S.")
