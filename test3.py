@@ -31,11 +31,12 @@ def main():
     with chat_container:
         display_chat()
 
-    # User input at the bottom
+    # User input and submit button
     user_input = st.text_input("Kullanıcı", placeholder="Lütfen sorunuzu yazınız", key="user_input")
+    submit_button = st.button("Send")
 
-    # Handling user input
-    if user_input:
+    # Handling user input when the button is clicked
+    if submit_button and user_input:
         user_message = "Kullanici: " + user_input
         st.session_state.chat_history.append(user_message)
 
@@ -47,8 +48,12 @@ def main():
         bot_response = "J.A.R.V.I.S.: " + get_iletisimkocu_response(user_input)
         st.session_state.chat_history.append(bot_response)
 
-        # Clear input box by rerunning the script
-        st.experimental_rerun()
+        # Clear the user input field
+        st.session_state.user_input = ""
+
+        # Refresh the chat display
+        with chat_container:
+            display_chat()
 
 # Run the main function
 if __name__ == "__main__":
