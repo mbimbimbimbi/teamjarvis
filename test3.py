@@ -17,25 +17,22 @@ def get_iletisimkocu_response(message):
 def main():
     st.title("Team J.A.R.V.I.S.")
 
-    # Initialize chat history and user input in session state
+    # Initialize chat history in session state
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
-    if 'user_input' not in st.session_state:
-        st.session_state.user_input = ""
 
     # Function to display the chat history
     def display_chat():
         for message in st.session_state.chat_history:
             st.text(message)
 
-    # User input at the bottom
-    user_input = st.text_input("Kullanıcı", placeholder="Lütfen sorunuzu yazınız", key="user_input", value=st.session_state.user_input)
-
     # Chat container for history
     chat_container = st.container()
-
     with chat_container:
         display_chat()
+
+    # User input at the bottom
+    user_input = st.text_input("Kullanıcı", placeholder="Lütfen sorunuzu yazınız", key="user_input")
 
     # Handling user input
     if user_input:
@@ -50,9 +47,8 @@ def main():
         bot_response = "J.A.R.V.I.S.: " + get_iletisimkocu_response(user_input)
         st.session_state.chat_history.append(bot_response)
 
-        # Clear input box and update chat history
-        st.session_state.user_input = ""
-        display_chat()
+        # Clear input box by rerunning the script
+        st.experimental_rerun()
 
 # Run the main function
 if __name__ == "__main__":
