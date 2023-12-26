@@ -17,9 +17,11 @@ def get_iletisimkocu_response(message):
 def main():
     st.title("Team J.A.R.V.I.S.")
 
-    # Initialize chat history in session state
+    # Initialize chat history and reset trigger in session state
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
+    if 'reset_trigger' not in st.session_state:
+        st.session_state.reset_trigger = False
 
     # Function to display the chat history
     def display_chat():
@@ -32,7 +34,8 @@ def main():
         display_chat()
 
     # User input and submit button
-    user_input = st.text_input("Kullanıcı", placeholder="Lütfen sorunuzu yazınız", key="user_input")
+    user_input = st.text_input("Kullanıcı", placeholder="Lütfen sorunuzu yazınız", key="user_input", value="" if st.session_state.reset_trigger else None)
+
     submit_button = st.button("Send")
 
     # Handling user input when the button is clicked
@@ -48,8 +51,8 @@ def main():
         bot_response = "J.A.R.V.I.S.: " + get_iletisimkocu_response(user_input)
         st.session_state.chat_history.append(bot_response)
 
-        # Clear the user input field
-        st.session_state.user_input = ""
+        # Set the reset trigger
+        st.session_state.reset_trigger = not st.session_state.reset_trigger
 
         # Refresh the chat display
         with chat_container:
