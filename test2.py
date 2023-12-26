@@ -21,7 +21,9 @@ def main():
     st.set_page_config(page_title="Team J.A.R.V.I.S.", layout="wide")
     
     st.title("Team J.A.R.V.I.S.")
-
+  
+    #Kullanıcının sorusunu sormayı tarif ettiğimiz alan burası
+    user_input = st.text_input("Kullanıcı", placeholder="Lütfen sorunuzu yazınız")
     
     #Chat container
     chat_container = st.container()
