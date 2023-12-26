@@ -43,7 +43,7 @@ def main():
         with chat_container:
             col1, col2 = st.columns([1, 1])
             with col2:
-            st.text("J.A.R.V.I.S.: " + bot_response)
+                st.text("J.A.R.V.I.S.: " + bot_response)
 
     #Kullanıcının sorusunu sormayı tarif ettiğimiz alan burası
     user_input = st.text_input("Kullanıcı", placeholder="Lütfen sorunuzu yazınız")        
